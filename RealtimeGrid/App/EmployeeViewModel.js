@@ -3,7 +3,9 @@
     var self = this;
     self.employees = ko.observableArray();
     self.loading = ko.observable(true);
+
     self.displayMode = function (employee) {
+        console.log("display mode");
         if (employee.Locked()) {
             return 'lock-template';
         } else {
@@ -13,7 +15,7 @@
 
     self.edit = function (employee) {
         employee.Edit(true);
-        employeeSignalR.server.lock(employee.Id)
+        employeeSignalR.server.lock(employee.Id,$.connection.hub.id)
     }
 
     self.done = function (employee) {
@@ -94,7 +96,7 @@
 $(function () {
     var employeesSignalR = $.connection.employee
     var viewModel = new EmployeeViewModel(employeesSignalR);
-
+    window.x = viewModel;
     var findEmployee = function (id) {
         return ko.utils.arrayFirst(viewModel.employees(), function (item) {
             if (item.Id == id) {
@@ -114,8 +116,12 @@ $(function () {
         employee.Locked(false);
     }
 
-    employeesSignalR.client.lockEmployee = function (id) {
+    employeesSignalR.client.lockEmployee = function (id, from) {
         var employee = findEmployee(id);
+        console.log("client-lockEmployee");
+        console.log($.connection.hub.id);
+        console.log(from);
+        toastr.success('Edit from connection: ' + from);
         employee.Locked(true);
     }
 

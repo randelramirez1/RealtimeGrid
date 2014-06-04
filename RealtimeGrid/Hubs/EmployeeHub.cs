@@ -43,13 +43,13 @@ namespace RealtimeGrid.Hubs
 
 
 
-        public void Lock(int id)
+        public void Lock(int id, string connectionId)
         {
             var employeeToPatch = db.Employees.Find(id);
             employeeToPatch.Locked = true;
             db.Entry(employeeToPatch).State = EntityState.Modified;
             db.SaveChanges();
-            Clients.Others.lockEmployee(id);
+            Clients.Others.lockEmployee(id,connectionId);
             mapping[Context.ConnectionId].Add(id);
         }
 
