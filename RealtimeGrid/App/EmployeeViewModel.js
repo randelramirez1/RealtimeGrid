@@ -79,6 +79,7 @@
             var obsEmployee = {
                 Id: employee.Id,
                 Name: ko.observable(employee.Name),
+                Sex: ko.observable(employee.Sex),
                 Email: ko.observable(employee.Email),
                 Salary: ko.observable(employee.Salary),
                 Edit: ko.observable(false),

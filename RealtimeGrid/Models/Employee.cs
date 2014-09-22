@@ -13,6 +13,8 @@ namespace RealtimeGrid.Models
 
         public string Email { get; set; }
 
+        public string Sex { get; set; }
+
         public float Salary { get; set; }
 
         public bool Locked { get; set; }
