@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using RealtimeGrid.Helpers;
+using System.Data.Entity;
 
 namespace RealtimeGrid.Models
 {
@@ -14,7 +15,7 @@ namespace RealtimeGrid.Models
         // System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<SingalRGridDemo.Models.SingalRGridDemoContext>());
 
         public RealtimeGridContext()
-            : base("name=RealtimeGridContext")
+            : base("name=" + AppHarborConntectionStringProvider.Get())
         {
         }
 
