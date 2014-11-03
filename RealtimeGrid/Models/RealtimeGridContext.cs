@@ -17,6 +17,7 @@ namespace RealtimeGrid.Models
         public RealtimeGridContext()
             : base("name=realtimegrid")
         {
+            this.Database.Connection.ConnectionString = AppHarborConntectionStringProvider.Get();
         }
 
         public DbSet<Employee> Employees { get; set; }
