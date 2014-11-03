@@ -15,7 +15,7 @@ namespace RealtimeGrid.Models
         // System.Data.Entity.Database.SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<SingalRGridDemo.Models.SingalRGridDemoContext>());
 
         public RealtimeGridContext()
-            : base("name=" + AppHarborConntectionStringProvider.Get())
+            : base("name=realtimegrid")
         {
         }
 
